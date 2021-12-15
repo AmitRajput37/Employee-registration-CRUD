@@ -1,6 +1,35 @@
-<!-- <div mat-dialog-content>Employee Added Successfully
-    <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">No Thanks</button>
-        <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-      </div>
+<!-- <div class="main-container"> -->
+<!-- <div class="content" mat-dialog-content>Are you sure ?</div> -->
+
+<!-- <div class="button-container" mat-dialog-actions>
+  <button id="yes-button" mat-button cdkFocusInitial>Yes</button>
+  <button id="no-button" mat-button cdkFocusInitial>No</button>
+</div>
 </div> -->
+<div *ngIf = "data.type == 'Confirmation'">
+  <h1 mat-dialog-title>
+    Confirm Action
+  </h1>
+  
+  <div mat-dialog-content>
+    <p>{{message}}</p>
+  </div>
+  
+  <div mat-dialog-actions>
+    <button mat-button (click)="onDismiss()">No</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+  </div>
+</div>
+
+<div *ngIf = "data.type == 'Add Alert'">
+  <div mat-dialog-content>
+    {{message}}
+  </div>
+</div>
+
+<div *ngIf = "data.type == 'Update Alert'">
+  <div mat-dialog-content>
+    {{message}}
+  </div>
+</div>
+

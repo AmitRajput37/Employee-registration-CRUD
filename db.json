@@ -1,22 +1,5 @@
 {
-  "posts": [
-    {
-      "id": 5,
-      "firstName": "Amit.kh022@gmail.com",
-      "lastName": "Amit.kh022@gmail.com",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "333333"
-    },
-    {
-      "id": 6,
-      "firstName": "Amit.kh022@gmail.com",
-      "lastName": "Amit.kh022@gmail.com",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "444444"
-    }
-  ],
+  "posts": [],
   "comments": [],
   "profile": {
     "name": "typicode"

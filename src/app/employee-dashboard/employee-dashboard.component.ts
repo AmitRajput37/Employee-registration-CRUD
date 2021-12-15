@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
+import { AngularDialogComponent, AngularDialogModel } from '../angular-dialog/angular-dialog.component';
 import { ApiService } from '../shared/api.service';
 import { EmployeeModel } from './employee.dashboard.model';
+
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -18,10 +19,11 @@ export class EmployeeDashboardComponent implements OnInit {
   employeeData : any;
   showAdd : boolean;
   showUpdate : boolean;
+  result: string = "";
 
   
   constructor(private formBuilder: FormBuilder,
-    private api: ApiService, public dialog: MatDialog ) { }
+    private api: ApiService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -64,7 +66,8 @@ export class EmployeeDashboardComponent implements OnInit {
     .subscribe(res => {
       console.log(res);
       // alert("Employee Added Successfully");
-      this.openDialog();
+      this.addDialog();
+      // this.openDialog();
       let ref = document.getElementById('cancel');
       ref.click();
       this.formValue.reset();
@@ -75,9 +78,74 @@ export class EmployeeDashboardComponent implements OnInit {
     })
   }
 
-  openDialog(){
-    this.dialog.open(AngularDialogComponent);
+  // openDialog(): void{
+  //   // this.dialog.open(AngularDialogComponent)
+  //   const message = "Are you sure ?";
+
+  //   const dialogData = new AngularDialogComponent("Confirm Action", message);
+  // }
+
+  deleteDialog(row:any): void{
+    // this.dialog.open(AngularDialogComponent)
+    const message = "Are you sure ?";
+
+   // const dialogData = new AngularDialogModel("Confirm Action", message);
+
+    const dialogRef = this.dialog.open(AngularDialogComponent, {
+      
+      maxWidth: "400px",
+      data: {message: message, type: 'Confirmation'}
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if(dialogResult == true){
+        this.deleteEmployee(row);
+      }
+    })
   }
+
+  addDialog(): void{
+    const message = "Employee added successfully";
+
+    const addDialogRef = this.dialog.open(AngularDialogComponent, {
+      maxWidth: "400px",
+      data: {message: message, type: 'Add Alert'}
+    });
+
+    addDialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    })
+  }
+
+  updateDialog(): void{
+    const message = "Employee details updated successfully";
+
+    const updateDialogRef = this.dialog.open(AngularDialogComponent,{
+      maxWidth: "400px",
+      data: {message: message, type:'Update Alert'}
+    });
+
+    updateDialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    })
+  }
+
+  // addDialog(): void{
+  //   const msg = "Employee Added Successfully";
+
+  //   const dialogData = new AngularDialogModel("Confirm Action", msg);
+
+  //   const dialogRef = this.dialog.open(AngularDialogComponent, {
+      
+  //     maxWidth: "400px",
+  //     data: dialogData
+  //   });
+  // }
+
+  // onConfirm(): void{
+  //   this.dialogRef.close(true);
+  // }
 
   getAllEmployee(){
     this.api.getEmployee()
@@ -87,9 +155,10 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
   deleteEmployee(row : any){
-    this.api.deleteEmployee(row.id)
+    
+   this.api.deleteEmployee(row.id)
     .subscribe(res => {
-      alert("Employee Deleted");
+      // alert("Employee Deleted")
       this.getAllEmployee();
     })
   }
@@ -114,7 +183,8 @@ export class EmployeeDashboardComponent implements OnInit {
 
     this.api.updateEmployee(this.employeeModelObj, this.employeeModelObj.id)
     .subscribe(res => {
-      alert("Employee details updated successfully");
+      // alert("Employee details updated successfully");
+      this.updateDialog();
       let ref = document.getElementById('cancel');
       ref?.click();
       this.formValue.reset();
