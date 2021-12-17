@@ -17,7 +17,13 @@ export class LoginComponent implements OnInit {
 
   isSubmitted  =  false;
   result: string = "";
-  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router, public dialog: MatDialog) { }
+  email: any;
+  password: any;
+  isLoggedIn: boolean;
+
+
+  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router,
+     public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -64,7 +70,9 @@ export class LoginComponent implements OnInit {
       this.result = dialogResult;
     })
   }
-
+  // login(){
+  
+  // }
   login(){
     this.http.get<any>("http://localhost:3000/signup")
     .subscribe(res => {
@@ -77,6 +85,7 @@ export class LoginComponent implements OnInit {
         return;
       }
       if(user){
+        this.isLoggedIn = true;
         // alert("login success !!");
         this.loginDialog();
         this.loginForm.reset();

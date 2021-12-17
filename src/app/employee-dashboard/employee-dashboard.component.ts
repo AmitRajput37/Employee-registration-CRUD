@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
 import { ApiService } from '../shared/api.service';
-import { AuthService } from '../shared/auth.service';
 import { EmployeeModel } from './employee.dashboard.model';
 
 
@@ -25,7 +24,7 @@ export class EmployeeDashboardComponent implements OnInit {
 
   
   constructor(private formBuilder: FormBuilder,
-    private api: ApiService, public dialog: MatDialog, private authService: AuthService, private router: Router) { }
+    private api: ApiService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -175,7 +174,4 @@ export class EmployeeDashboardComponent implements OnInit {
       this.getAllEmployee();
     })
   }
-
-  
-
 }
