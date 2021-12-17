@@ -9,13 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AngularDialogComponent } from './angular-dialog/angular-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeDashboardComponent,
-    AngularDialogComponent
+    AngularDialogComponent,
+    LoginComponent,
+    SignupComponent
   ],
 
   entryComponents:[
@@ -29,7 +34,8 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

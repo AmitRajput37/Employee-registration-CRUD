@@ -1,11 +1,13 @@
 <nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
-        <h1>Angular CRUD</h1>
+        <h1>Employee Registration Form</h1>
         <div class="d-flex">
             <button (click)="clickAddEmployee()" type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
                 Add Employee
             </button>
+
+            <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
         </div>
     </div>
 </nav>
@@ -46,12 +48,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Employee Detail</h5>
+                <h2 class="modal-title" id="exampleModalLabel">Employee Detail</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-
                 <form [formGroup]="formValue">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">First Name</label>
@@ -88,8 +88,6 @@
                             *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required', 'salary')">*Salary is required</span>
                     </div>
                 </form>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

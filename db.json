@@ -1,6 +1,83 @@
 {
-  "posts": [],
-  "comments": [],
+  "posts": [
+    {
+      "id": 2,
+      "firstName": "nikhil",
+      "lastName": "shinde",
+      "email": "nikhil@gmail.com",
+      "mobile": "9999999990",
+      "salary": "56000"
+    },
+    {
+      "id": 3,
+      "firstName": "karan",
+      "lastName": "kalkotwar",
+      "email": "karan@gmail.com",
+      "mobile": "8888888888",
+      "salary": "99999"
+    },
+    {
+      "id": 4,
+      "firstName": "Amit.kh022@gmail.com",
+      "lastName": "Amit.kh022@gmail.com",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "9890984945",
+      "salary": "44444"
+    },
+    {
+      "id": 5,
+      "firstName": "Amit.kh022@gmail.com",
+      "lastName": "Amit.kh022@gmail.com",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "9890984945",
+      "salary": "111111"
+    },
+    {
+      "id": 6,
+      "firstName": "Amit.kh022@gmail.com",
+      "lastName": "Amit.kh022@gmail.com",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "9890984945",
+      "salary": "0000000"
+    }
+  ],
+  "signup": [
+    {
+      "fullname": "Amit Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "password": "1233",
+      "mobile": 9890984945,
+      "id": 1
+    },
+    {
+      "fullname": "shubham rai",
+      "email": "shubham@gmail.com",
+      "password": "1234",
+      "mobile": 88888888888,
+      "id": 2
+    },
+    {
+      "fullname": "karan kalkotwar",
+      "email": "karan@gmail.com",
+      "password": "12345",
+      "mobile": 5545454545,
+      "id": 3
+    },
+    {
+      "fullname": "",
+      "email": "",
+      "password": "",
+      "mobile": "",
+      "id": 4
+    },
+    {
+      "fullname": "nikhil shinde",
+      "email": "nikhil@gmail.com",
+      "password": "1234",
+      "mobile": 877777777,
+      "id": 5
+    }
+  ],
   "profile": {
     "name": "typicode"
   }

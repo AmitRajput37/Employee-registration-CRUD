@@ -33,3 +33,24 @@
   </div>
 </div>
 
+
+<div *ngIf = "data.type == 'Login Alert'">
+  <div mat-dialog-content>
+    {{message}}
+  </div>
+</div>
+
+<div *ngIf = "data.type == 'Not Found Alert'">
+  <div mat-dialog-content>
+    {{message}}
+  </div>
+</div>
+
+<div *ngIf = "data.type == 'Error Alert'">
+  <div mat-dialog-content>
+    {{message}}
+  </div>
+</div>
+
+
+

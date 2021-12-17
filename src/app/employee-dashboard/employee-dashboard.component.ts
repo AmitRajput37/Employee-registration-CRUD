@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AngularDialogComponent, AngularDialogModel } from '../angular-dialog/angular-dialog.component';
+import { Router } from '@angular/router';
+import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
 import { ApiService } from '../shared/api.service';
+import { AuthService } from '../shared/auth.service';
 import { EmployeeModel } from './employee.dashboard.model';
 
 
@@ -23,7 +25,7 @@ export class EmployeeDashboardComponent implements OnInit {
 
   
   constructor(private formBuilder: FormBuilder,
-    private api: ApiService, public dialog: MatDialog) { }
+    private api: ApiService, public dialog: MatDialog, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -37,9 +39,6 @@ export class EmployeeDashboardComponent implements OnInit {
 
     this.getAllEmployee();
 
-    // this.formValue = new FormGroup({
-    //   'firstName' : new FormControl('null', Validators.required),
-    // });
   }
 
   clickAddEmployee(){
@@ -56,40 +55,41 @@ export class EmployeeDashboardComponent implements OnInit {
     this.employeeModelObj.mobile = this.formValue.controls.mobile.value;
     this.employeeModelObj.salary = this.formValue.controls.salary.value;
 
-    // this.employeeModelObj.firstName = this.formValue.value.firstName;
-    // this.employeeModelObj.lastName = this.formValue.value.lastName;
-    // this.employeeModelObj.email = this.formValue.value.email;
-    // this.employeeModelObj.mobile = this.formValue.value.mobile;
-    // this.employeeModelObj.salary = this.formValue.value.salary;
-
     this.api.postEmployee(this.employeeModelObj)
     .subscribe(res => {
       console.log(res);
       // alert("Employee Added Successfully");
-      this.addDialog();
-      // this.openDialog();
+      
       let ref = document.getElementById('cancel');
       ref.click();
       this.formValue.reset();
+      this.addDialog();
       this.getAllEmployee();
+      
     },
     err => {
-      alert("Something went wrong");
+      // alert("Something went wrong");
+      this.somethingWentWrongDialog();
     })
   }
 
-  // openDialog(): void{
-  //   // this.dialog.open(AngularDialogComponent)
-  //   const message = "Are you sure ?";
 
-  //   const dialogData = new AngularDialogComponent("Confirm Action", message);
-  // }
+  somethingWentWrongDialog():void{
+    const message = "Something went wrong";
+
+    const addDialogRef = this.dialog.open(AngularDialogComponent, {
+      maxWidth: "400px",
+      data: {message: message, type: 'Error Alert'}
+    });
+
+    addDialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    })
+  }
 
   deleteDialog(row:any): void{
-    // this.dialog.open(AngularDialogComponent)
     const message = "Are you sure ?";
 
-   // const dialogData = new AngularDialogModel("Confirm Action", message);
 
     const dialogRef = this.dialog.open(AngularDialogComponent, {
       
@@ -130,22 +130,6 @@ export class EmployeeDashboardComponent implements OnInit {
       this.result = dialogResult;
     })
   }
-
-  // addDialog(): void{
-  //   const msg = "Employee Added Successfully";
-
-  //   const dialogData = new AngularDialogModel("Confirm Action", msg);
-
-  //   const dialogRef = this.dialog.open(AngularDialogComponent, {
-      
-  //     maxWidth: "400px",
-  //     data: dialogData
-  //   });
-  // }
-
-  // onConfirm(): void{
-  //   this.dialogRef.close(true);
-  // }
 
   getAllEmployee(){
     this.api.getEmployee()

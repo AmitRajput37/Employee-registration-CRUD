@@ -31,9 +31,3 @@ export class AngularDialogComponent implements OnInit {
     this.dialogRef.close(false);
   }
 }
-
-export class AngularDialogModel {
-  constructor( public title: string, public message: string){
-
-  }
-} 
