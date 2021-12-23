@@ -9,7 +9,7 @@
                 <form [formGroup]="signupForm" (ngSubmit)="signUp()">
 
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Full Name</label>
+                        <label class="form-label">Full Name</label>
                         <input formControlName="fullname" type="text" class="form-control"><br>
                         <span class="text-danger" *ngIf="signupForm.controls['fullname'].dirty && signupForm.hasError('required' , 'fullname')">*Full Name is required</span>
                     </div>
@@ -33,7 +33,7 @@
                         <span class="text-danger" *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required' , 'password')">*Password is required</span>
                     </div>
 
-                    <button type="submit" [disabled]="!signupForm.valid" (click)="signUp()" class="btn btn-primary mb-2">Sign Up</button>
+                    <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary mb-2">Sign Up</button>
 
                 </form>
 

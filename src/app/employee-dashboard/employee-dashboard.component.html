@@ -1,5 +1,6 @@
 <nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
+        <h1>Rajput Enterprises</h1>
         <h1>Employee Registration Form</h1>
         <div class="d-flex">
             <button (click)="clickAddEmployee()" type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -43,6 +44,7 @@
 
 
 
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -54,8 +56,8 @@
             <div class="modal-body">
                 <form [formGroup]="formValue">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">First Name</label>
-                        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1"
+                        <label>First Name</label>
+                        <input matInput type="text" formControlName="firstName" class="form-control" 
                             aria-describedby="emailHelp">
                         <span class="text-danger"
                             *ngIf="formValue.controls['firstName'].dirty && formValue.hasError('required', 'firstName')">*First
@@ -64,26 +66,26 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Last Name</label>
-                        <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                        <input type="text" formControlName="lastName" class="form-control">
                         <span class="text-danger"
                             *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required', 'lastName')">*Last
                             Name is required</span>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Email Id</label>
-                        <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
+                        <input type="email" formControlName="email" class="form-control">
                         <span class="text-danger"
                             *ngIf="formValue.controls['email'].dirty && formValue.hasError('required', 'email')">*Email id is required</span>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
-                        <input maxlength="10" type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+                        <input maxlength="10" type="text" formControlName="mobile" class="form-control">
                         <span class="text-danger"
                             *ngIf="formValue.controls['mobile'].dirty && formValue.hasError('required', 'mobile')">*Mobile Number is required</span>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Salary</label>
-                        <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1">
+                        <input type="text" formControlName="salary" class="form-control">
                         <span class="text-danger"
                             *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required', 'salary')">*Salary is required</span>
                     </div>

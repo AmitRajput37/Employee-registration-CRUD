@@ -14,16 +14,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class LoginComponent implements OnInit {
 
   public loginForm : FormGroup;
+  public isInValid : boolean;
 
   isSubmitted  =  false;
   result: string = "";
   email: any;
   password: any;
-  isLoggedIn: boolean;
 
 
   constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router,
-     public dialog: MatDialog) { }
+     public dialog: MatDialog) {  localStorage.clear() }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -70,10 +70,10 @@ export class LoginComponent implements OnInit {
       this.result = dialogResult;
     })
   }
-  // login(){
+
   
-  // }
-  login(){
+  login(): void{
+    var isChecked = true;
     this.http.get<any>("http://localhost:3000/signup")
     .subscribe(res => {
       const user = res.find((a:any) => {
@@ -82,16 +82,19 @@ export class LoginComponent implements OnInit {
 
       console.log(this.loginForm.value);
       if(this.loginForm.invalid){
+        isChecked = false;
         return;
       }
       if(user){
-        this.isLoggedIn = true;
         // alert("login success !!");
+        
         this.loginDialog();
+        localStorage.setItem('token', "abcdefgh");
         this.loginForm.reset();
         this.router.navigate(['dashboard'])
       }else{
-        alert("user not found !!");
+        // alert("user not found !!");
+        this.userNotFoundDialog();
       }
     }, err => {
       // alert("Something went wrong !!");

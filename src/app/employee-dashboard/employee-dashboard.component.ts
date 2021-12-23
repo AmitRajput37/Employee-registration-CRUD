@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
 import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
 import { ApiService } from '../shared/api.service';
 import { EmployeeModel } from './employee.dashboard.model';
+import { MatTableDataSource } from '@angular/material/table';
+
+
+// const DATA: EmployeeModel[]=[
+//   {id: 1, firstName:'Amit', lastName:'Maiyar', email:'amit@gmail.com', mobile:'9890984945', salary:'89000' }
+// ]
 
 
 @Component({
@@ -13,6 +19,14 @@ import { EmployeeModel } from './employee.dashboard.model';
   styleUrls: ['./employee-dashboard.component.css']
 })
 export class EmployeeDashboardComponent implements OnInit {
+
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol']
+
+  // dataSource = new MatTableDataSource(DATA)
+
+  // applyFilter(filterValue: string){
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 
   formValue : FormGroup;
 

@@ -1,44 +1,36 @@
 {
   "posts": [
     {
+      "id": 1,
+      "firstName": "Amit",
+      "lastName": "Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "9890984945",
+      "salary": "50000"
+    },
+    {
       "id": 2,
-      "firstName": "nikhil",
-      "lastName": "shinde",
-      "email": "nikhil@gmail.com",
-      "mobile": "9999999990",
-      "salary": "56000"
+      "firstName": "Shubham",
+      "lastName": "Rai",
+      "email": "Shubham@gmail.com",
+      "mobile": "1122334455",
+      "salary": "23000"
     },
     {
       "id": 3,
-      "firstName": "karan",
-      "lastName": "kalkotwar",
-      "email": "karan@gmail.com",
-      "mobile": "8888888888",
-      "salary": "99999"
+      "firstName": "Naveen ",
+      "lastName": "Kumar",
+      "email": "Naveen@gmail.com",
+      "mobile": "2233445512",
+      "salary": "66700"
     },
     {
       "id": 4,
-      "firstName": "Amit.kh022@gmail.com",
-      "lastName": "Amit.kh022@gmail.com",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "44444"
-    },
-    {
-      "id": 5,
-      "firstName": "Amit.kh022@gmail.com",
-      "lastName": "Amit.kh022@gmail.com",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "111111"
-    },
-    {
-      "id": 6,
-      "firstName": "Amit.kh022@gmail.com",
-      "lastName": "Amit.kh022@gmail.com",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "0000000"
+      "firstName": "Girish",
+      "lastName": "Das",
+      "email": "girish@gmail.com",
+      "mobile": "2345678910",
+      "salary": "89000"
     }
   ],
   "signup": [
@@ -64,18 +56,53 @@
       "id": 3
     },
     {
-      "fullname": "",
-      "email": "",
-      "password": "",
-      "mobile": "",
-      "id": 4
-    },
-    {
       "fullname": "nikhil shinde",
       "email": "nikhil@gmail.com",
       "password": "1234",
       "mobile": 877777777,
       "id": 5
+    },
+    {
+      "fullname": "chetan maiyar",
+      "email": "chetan@gmail.com",
+      "password": "1234",
+      "mobile": 656566655,
+      "id": 6
+    },
+    {
+      "fullname": "naveen kumar",
+      "email": "naveen@gmail.com",
+      "password": "1234",
+      "mobile": 2323232,
+      "id": 8
+    },
+    {
+      "fullname": "girish ",
+      "email": "girish@gmail.com",
+      "password": "1234",
+      "mobile": 76767676,
+      "id": 10
+    },
+    {
+      "fullname": "arvind",
+      "email": "arvind@gmail.com",
+      "password": "1234",
+      "mobile": 1212121212,
+      "id": 12
+    },
+    {
+      "fullname": "Amit Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "password": "123",
+      "mobile": 9890984945,
+      "id": 14
+    },
+    {
+      "fullname": "Amit Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "password": "1234",
+      "mobile": "09890984945",
+      "id": 15
     }
   ],
   "profile": {
