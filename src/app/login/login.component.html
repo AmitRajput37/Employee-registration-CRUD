@@ -9,16 +9,25 @@
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp">
+                        <input formControlName="email" placeholder="Enter your email id" name="email" type="email" class="form-control" aria-describedby="emailHelp">
+                        <div *ngIf="submitted && f.email.errors">
+                            <div class="text-danger" *ngIf="f.email.errors.required">
+                                Email Id is required
+                            </div>
+                        </div>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
-                        <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required' , 'email')">*Email Id is required</span>
+                        <!-- <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required' , 'email')">*Email Id is required</span> -->
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input formControlName="password" type="password" class="form-control" ><br>
-                        <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span>
+                        <input formControlName="password" placeholder="Enter your password" name="password" type="password" class="form-control" >
+                        <div *ngIf="submitted && f.password.errors">
+                            <div class="text-danger" *ngIf="f.password.errors.required">Password is required</div>
+                            <div class="text-danger" *ngIf="f.password.errors.minlength">Password should be atleast 6 words</div>
+                        </div>
+                        <!-- <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span> -->
                     </div>
-                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary mb-2">Login</button>
+                    <button type="submit" class="btn btn-primary mb-2">Login</button>
                 </form>
 
                 <a style="color: #fff;" routerLink="/signup">New User? click here to Signup !!</a>

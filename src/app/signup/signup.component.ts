@@ -14,17 +14,52 @@ import { MatDialog } from '@angular/material/dialog';
 export class SignupComponent implements OnInit {
   public signupForm : FormGroup;
   result: string ="";
+  submitted : boolean = false;
 
-  constructor( private formBuilder : FormBuilder, private http: HttpClient, private router: Router, private dialog: MatDialog) { }
+  constructor( private formBuilder : FormBuilder, private http: HttpClient, private router: Router, 
+    private dialog: MatDialog) { 
 
-  
+      this.signupForm = this.formBuilder.group({
+        fullname  : new FormControl('', [Validators.required]),
+        mobile  : new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+        email  : new FormControl(null, [Validators.required]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+        confirmpassword : new FormControl('', [Validators.required])
+        // email: ['',Validators.required],
+        // password: ['', Validators.required]
+      },
+      {
+        validators: this.MustMatch('password', 'confirmpassword')
+      }
+      )
+    }
+
+    get f () { return this.signupForm.controls}
+
+    MustMatch(controlName: string, matchingControlName: string  ){
+      return(formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const mathchingControl = formGroup.controls[matchingControlName];
+        if(mathchingControl.errors && !mathchingControl.errors.mustMatch){
+          return
+        }
+
+        if(control.value !== mathchingControl.value){
+          mathchingControl.setErrors({mustMatch:true})
+        }
+        else{
+          mathchingControl.setErrors(null)
+        }
+      }
+    }
+
   ngOnInit(): void {
-    this.signupForm = this.formBuilder.group({
-      fullname : ['', Validators.required],
-      email : ['', Validators.required],
-      password : ['', Validators.required],
-      mobile : ['', Validators.required]
-    })
+    // this.signupForm = this.formBuilder.group({
+    //   fullname : ['', Validators.required],
+    //   email : ['', Validators.required],
+    //   password : ['', Validators.required],
+    //   mobile : ['', Validators.required]
+    // })
 
     
   }
@@ -66,8 +101,14 @@ export class SignupComponent implements OnInit {
       this.result = dialogResult;
     })
   }
+
+  
   
   signUp(){
+    this.submitted = true;
+    if(this.signupForm.invalid){
+      return;
+    }
     this.http.post<any>("http://localhost:3000/signup", this.signupForm.value)
     .subscribe(res => {
       

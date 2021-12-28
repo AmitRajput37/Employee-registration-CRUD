@@ -4,36 +4,65 @@
             <div class="card">
                 <div class="text-center">
                     <h1>Sign Up</h1>
-                    <h5>Rgister Yourself</h5>
+                    <h5>Register Yourself</h5>
                 </div>
                 <form [formGroup]="signupForm" (ngSubmit)="signUp()">
 
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
-                        <input formControlName="fullname" type="text" class="form-control"><br>
-                        <span class="text-danger" *ngIf="signupForm.controls['fullname'].dirty && signupForm.hasError('required' , 'fullname')">*Full Name is required</span>
+                        <input formControlName="fullname" placeholder="Enter full name" type="text" name="fullname" class="form-control">
+                        <div *ngIf="submitted && f.fullname.errors">
+                            <div class="text-danger" *ngIf="f.fullname.errors.required">
+                                Full Name is required
+                            </div>
+                        </div>
+                        <!-- <span class="text-danger" *ngIf="signupForm.controls['fullname'].dirty && signupForm.hasError('required' , 'fullname')">*Full Name is required</span> -->
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
-                        <input formControlName="mobile" type="number" class="form-control"><br>
-                        <span class="text-danger" *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('required' , 'mobile')">*Mobile Number is required</span>
+                        <input maxlength="10" formControlName="mobile" placeholder="Enter mobile number" name="mobile" type="text" class="form-control">
+                        <div *ngIf="submitted && f.mobile.errors">
+                            <div class="text-danger" *ngIf="f.mobile.errors.required">Mobile no is required</div>
+                            <div class="text-danger" *ngIf="f.mobile.errors.minlength">Mobile number should be 10 digits</div>
+                        </div>
+                        <!-- <span class="text-danger" *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('required' , 'mobile')">*Mobile Number is required</span> -->
                     </div>
 
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp"><br>
-                        <span class="text-danger" *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required' , 'email')">*Email Id is required</span>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div class="mb-3" [class.has-error]="f.email.invalid && f.email.touched">
+                        <label class="form-label">Email address</label>
+                        <input formControlName="email" placeholder="Enter your email id" name="email" 
+                        type="email" class="form-control" aria-describedby="emailHelp" email>
+                        <div *ngIf="submitted && f.email.errors">
+                            <div class="text-danger" *ngIf="f.email.errors.required">
+                               <span *ngIf="f.email.invalid && f.email.touched">Email Id is required</span> 
+                            </div>
+                        </div>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
+                        <!-- <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required' , 'email')">*Email Id is required</span> -->
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input formControlName="password" type="password" class="form-control">
-                        <span class="text-danger" *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required' , 'password')">*Password is required</span>
+                        <input formControlName="password" placeholder="Enter password" name="password" type="password" class="form-control">
+                        <div *ngIf="submitted && f.password.errors">
+                            <div class="text-danger" *ngIf="f.password.errors.required">Password is required</div>
+                            <div class="text-danger" *ngIf="f.password.errors.minlength">Password should be atleast 6 words</div>
+                        </div>
+                        <!-- <span class="text-danger" *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required' , 'password')">*Password is required</span> -->
                     </div>
 
-                    <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary mb-2">Sign Up</button>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input formControlName="confirmpassword" placeholder="Confirm password" name="confirmpassword" placeholder="confirm password" name="confirmpassword" type="password" class="form-control" >
+                        <div *ngIf="submitted && f.confirmpassword.errors">
+                            <div class="text-danger" *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+                            <div class="text-danger" *ngIf="f.confirmpassword.errors.mustMatch">Confirm Password didn't match</div>
+                        </div>
+                        <!-- <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span> -->
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
 
                 </form>
 

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm : FormGroup;
   public isInValid : boolean;
+  submitted : boolean = false;
 
   isSubmitted  =  false;
   result: string = "";
@@ -23,14 +25,28 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router,
-     public dialog: MatDialog) {  localStorage.clear() }
+     public dialog: MatDialog) {  
+       localStorage.clear() 
+      
+       this.loginForm = this.formBuilder.group({
+        email  : new FormControl(null, [Validators.required]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+        // email: ['',Validators.required],
+        // password: ['', Validators.required]
+      })
+      }
+
+      get f () { return this.loginForm.controls}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['',Validators.required],
-      password: ['', Validators.required]
-    })
+    // this.loginForm = this.formBuilder.group({
+    //   username  : new FormControl(null, [Validators.required])
+    //   // email: ['',Validators.required],
+    //   // password: ['', Validators.required]
+    // })
   }
+
+
 
   userNotFoundDialog(): void{
     const message = "User not found";
@@ -73,6 +89,7 @@ export class LoginComponent implements OnInit {
 
   
   login(): void{
+    this.submitted = true;
     var isChecked = true;
     this.http.get<any>("http://localhost:3000/signup")
     .subscribe(res => {

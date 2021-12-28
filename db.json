@@ -31,6 +31,22 @@
       "email": "girish@gmail.com",
       "mobile": "2345678910",
       "salary": "89000"
+    },
+    {
+      "id": 5,
+      "firstName": "Amit",
+      "lastName": "Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "2222222222",
+      "salary": "67000"
+    },
+    {
+      "id": 6,
+      "firstName": "cas",
+      "lastName": "",
+      "email": "AxaS",
+      "mobile": "aAX",
+      "salary": "ASA"
     }
   ],
   "signup": [
@@ -103,6 +119,52 @@
       "password": "1234",
       "mobile": "09890984945",
       "id": 15
+    },
+    {
+      "fullname": "suraj",
+      "email": "suraj@gmail.com",
+      "password": "1234",
+      "mobile": "9898989898",
+      "id": 16
+    },
+    {
+      "fullname": "vikas",
+      "email": "vikas@gmail.com",
+      "password": "1234",
+      "mobile": "9898989898",
+      "id": 17
+    },
+    {
+      "fullname": "",
+      "mobile": "",
+      "email": null,
+      "password": "",
+      "confirmpassword": "",
+      "id": 18
+    },
+    {
+      "fullname": "",
+      "mobile": "",
+      "email": null,
+      "password": "",
+      "confirmpassword": "",
+      "id": 19
+    },
+    {
+      "fullname": "aaa",
+      "mobile": "9898989898",
+      "email": "aaa",
+      "password": "aaaaaa",
+      "confirmpassword": "aaaaaa",
+      "id": 20
+    },
+    {
+      "fullname": "aaa",
+      "mobile": "2222222222",
+      "email": "amit@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 21
     }
   ],
   "profile": {
