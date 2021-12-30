@@ -20,10 +20,10 @@ export class SignupComponent implements OnInit {
     private dialog: MatDialog) { 
 
       this.signupForm = this.formBuilder.group({
-        fullname  : new FormControl('', [Validators.required]),
-        mobile  : new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-        email  : new FormControl(null, [Validators.required]),
-        password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+        fullname  : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 _]*')]),
+        mobile  : new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern('[0-9]*')]),
+        email  : new FormControl('', [Validators.required, Validators.email]),
+        password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern('[a-zA-Z0-9_]*')]),
         confirmpassword : new FormControl('', [Validators.required])
         // email: ['',Validators.required],
         // password: ['', Validators.required]
@@ -35,6 +35,10 @@ export class SignupComponent implements OnInit {
     }
 
     get f () { return this.signupForm.controls}
+    get email() {return this.signupForm.get('email')}
+    get password() {return this.signupForm.get('password')}
+    get mobile() {return this.signupForm.get('mobile')}
+    get fullname() { return this.signupForm.get('fullname')}
 
     MustMatch(controlName: string, matchingControlName: string  ){
       return(formGroup: FormGroup) => {

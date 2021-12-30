@@ -3,3 +3,22 @@ h1{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
 }
+
+table {
+    width: 100%;
+  }
+
+  mat-header-cell{
+      font-size: 100px;
+  }
+
+  th{
+    font-size: 15px;
+    font-weight: bolder;
+    color: rgba(black, 2);
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

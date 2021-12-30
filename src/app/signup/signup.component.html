@@ -11,44 +11,49 @@
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
                         <input formControlName="fullname" placeholder="Enter full name" type="text" name="fullname" class="form-control">
-                        <div *ngIf="submitted && f.fullname.errors">
+                        <!-- <div *ngIf="submitted && f.fullname.errors">
                             <div class="text-danger" *ngIf="f.fullname.errors.required">
                                 Full Name is required
                             </div>
-                        </div>
+                        </div> -->
+                        <span class="error" *ngIf="fullname.invalid && fullname.touched">Name is invalid</span>
+                        
                         <!-- <span class="text-danger" *ngIf="signupForm.controls['fullname'].dirty && signupForm.hasError('required' , 'fullname')">*Full Name is required</span> -->
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
                         <input maxlength="10" formControlName="mobile" placeholder="Enter mobile number" name="mobile" type="text" class="form-control">
-                        <div *ngIf="submitted && f.mobile.errors">
+                        <!-- <div *ngIf="submitted && f.mobile.errors">
                             <div class="text-danger" *ngIf="f.mobile.errors.required">Mobile no is required</div>
                             <div class="text-danger" *ngIf="f.mobile.errors.minlength">Mobile number should be 10 digits</div>
-                        </div>
+                        </div> -->
+                        <span class="error" *ngIf="mobile.invalid && mobile.touched">Mobile number invalid</span>
                         <!-- <span class="text-danger" *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('required' , 'mobile')">*Mobile Number is required</span> -->
                     </div>
 
-                    <div class="mb-3" [class.has-error]="f.email.invalid && f.email.touched">
+                    <div class="mb-3">
                         <label class="form-label">Email address</label>
-                        <input formControlName="email" placeholder="Enter your email id" name="email" 
+                        <input formControlName="email" required placeholder="Enter your email id" name="email" 
                         type="email" class="form-control" aria-describedby="emailHelp" email>
-                        <div *ngIf="submitted && f.email.errors">
+                        <!-- <div *ngIf="submitted && f.email.errors">
                             <div class="text-danger" *ngIf="f.email.errors.required">
                                <span *ngIf="f.email.invalid && f.email.touched">Email Id is required</span> 
                             </div>
-                        </div>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
+                        </div> -->
+                        <span class="error" *ngIf="email.invalid && email.touched">Email is invalid</span>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         <!-- <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required' , 'email')">*Email Id is required</span> -->
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input formControlName="password" placeholder="Enter password" name="password" type="password" class="form-control">
-                        <div *ngIf="submitted && f.password.errors">
+                        <!-- <div *ngIf="submitted && f.password.errors">
                             <div class="text-danger" *ngIf="f.password.errors.required">Password is required</div>
                             <div class="text-danger" *ngIf="f.password.errors.minlength">Password should be atleast 6 words</div>
-                        </div>
+                        </div> -->
+                        <span class="error" *ngIf="password.invalid && password.touched">Password is invalid</span>
                         <!-- <span class="text-danger" *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required' , 'password')">*Password is required</span> -->
                     </div>
 
@@ -56,7 +61,7 @@
                         <label class="form-label">Confirm Password</label>
                         <input formControlName="confirmpassword" placeholder="Confirm password" name="confirmpassword" placeholder="confirm password" name="confirmpassword" type="password" class="form-control" >
                         <div *ngIf="submitted && f.confirmpassword.errors">
-                            <div class="text-danger" *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+                            <!-- <div class="text-danger" *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div> -->
                             <div class="text-danger" *ngIf="f.confirmpassword.errors.mustMatch">Confirm Password didn't match</div>
                         </div>
                         <!-- <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span> -->

@@ -6,7 +6,7 @@
       "lastName": "Maiyar",
       "email": "Amit.kh022@gmail.com",
       "mobile": "9890984945",
-      "salary": "50000"
+      "salary": "500003"
     },
     {
       "id": 2,
@@ -34,19 +34,19 @@
     },
     {
       "id": 5,
-      "firstName": "Amit",
-      "lastName": "Maiyar",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "2222222222",
-      "salary": "67000"
+      "firstName": "Bharat",
+      "lastName": "Pande",
+      "email": "bharat@gmail.com",
+      "mobile": "9890984945",
+      "salary": "45000"
     },
     {
       "id": 6,
-      "firstName": "cas",
-      "lastName": "",
-      "email": "AxaS",
-      "mobile": "aAX",
-      "salary": "ASA"
+      "firstName": "Chetan",
+      "lastName": "Maiyar",
+      "email": "chetan@gmail.com",
+      "mobile": "8888888888",
+      "salary": "76000"
     }
   ],
   "signup": [
@@ -165,6 +165,38 @@
       "password": "123456",
       "confirmpassword": "123456",
       "id": 21
+    },
+    {
+      "fullname": "Amit Maiyar",
+      "mobile": "9890984945",
+      "email": "Amit.kh022@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 22
+    },
+    {
+      "fullname": "Amit Maiyar",
+      "mobile": "9890984945",
+      "email": "Amit.kh022@gmail.com",
+      "password": "amit037",
+      "confirmpassword": "amit037",
+      "id": 23
+    },
+    {
+      "fullname": "amiy22",
+      "mobile": "9898989898",
+      "email": "Amit.kh022@gmail.com",
+      "password": "amit037",
+      "confirmpassword": "amit037",
+      "id": 24
+    },
+    {
+      "fullname": "amit",
+      "mobile": "9890999999",
+      "email": "amit@gmail.com",
+      "password": "amitmaiyar",
+      "confirmpassword": "amitmaiyar",
+      "id": 25
     }
   ],
   "profile": {

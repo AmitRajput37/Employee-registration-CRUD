@@ -16,6 +16,7 @@ import { AuthService } from './shared/auth.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatSortModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
