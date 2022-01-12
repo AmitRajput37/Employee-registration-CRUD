@@ -1,0 +1,20 @@
+{
+  "choose_language": "Sprache wählen",
+  "name" : "Rajput-Unternehmen",
+  "header" : "Formular zur Mitarbeiterregistrierung",
+  "language.english": "Englisch",
+  "language.french": "Französisch",
+  "language.german": "German",
+  "add_button" : "Mitarbeiter hinzufügen",
+  "logout_button" : "Ausloggen",
+  "employee_id" : "Angestellten ID",
+  "first_name" : "Vorname",
+  "last_name" : "Nachname",
+  "email" : "Email",
+  "mobile" : "Mobiltelefon",
+  "salary" : "Gehalt",
+  "action" : "Aktion",
+  "edit" : "Bearbeiten",
+  "delete" : "Löschen",
+  "filter" : "Filter"
+}

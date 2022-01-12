@@ -21,7 +21,7 @@
                         <!-- <span class="text-danger" *ngIf="signupForm.controls['fullname'].dirty && signupForm.hasError('required' , 'fullname')">*Full Name is required</span> -->
                     </div>
 
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
                         <input maxlength="10" formControlName="mobile" placeholder="Enter mobile number" name="mobile" type="text" class="form-control">
                         <!-- <div *ngIf="submitted && f.mobile.errors">
@@ -31,6 +31,8 @@
                         <span class="error" *ngIf="mobile.invalid && mobile.touched">Mobile number invalid</span>
                         <!-- <span class="text-danger" *ngIf="signupForm.controls['mobile'].dirty && signupForm.hasError('required' , 'mobile')">*Mobile Number is required</span> -->
                     </div>
+
+                    
 
                     <div class="mb-3">
                         <label class="form-label">Email address</label>

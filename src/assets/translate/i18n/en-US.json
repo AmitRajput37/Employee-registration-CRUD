@@ -1,0 +1,20 @@
+{
+  "choose_language": "Choose Language",
+  "name" : "Rajput Enterprises",
+  "header" : "Employee Registration Form",
+  "language.english": "English",
+  "language.french": "French",
+  "language.german": "German",
+  "add_button" : "Add Employee",
+  "logout_button" : "Logout",
+  "employee_id" : "Employee Id",
+  "first_name" : "First Name",
+  "last_name" : "Last Name",
+  "email" : "Email",
+  "mobile" : "Mobile",
+  "salary" : "Salary",
+  "action" : "Action",
+  "edit" : "Edit",
+  "delete" : "Delete",
+  "filter" : "Filter"
+}

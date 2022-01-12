@@ -25,14 +25,6 @@
       "salary": "66700"
     },
     {
-      "id": 4,
-      "firstName": "Girish",
-      "lastName": "Das",
-      "email": "girish@gmail.com",
-      "mobile": "2345678910",
-      "salary": "89000"
-    },
-    {
       "id": 5,
       "firstName": "Bharat",
       "lastName": "Pande",
@@ -197,6 +189,22 @@
       "password": "amitmaiyar",
       "confirmpassword": "amitmaiyar",
       "id": 25
+    },
+    {
+      "fullname": "Amit Maiyar",
+      "mobile": "",
+      "email": "amit.kh022@gmail.com",
+      "password": "amit037",
+      "confirmpassword": "amit037",
+      "id": 26
+    },
+    {
+      "fullname": "abirami raghu",
+      "mobile": "8888888888",
+      "email": "abirami@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456",
+      "id": 27
     }
   ],
   "profile": {

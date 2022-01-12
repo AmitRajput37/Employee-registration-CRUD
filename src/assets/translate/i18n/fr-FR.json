@@ -1,0 +1,20 @@
+{
+    "choose_language": "choisissez votre langue",
+    "name": "Entreprises Rajput",
+    "header": "Formulaire d'inscription des employés",
+    "language.english": "Anglais",
+    "language.french": "français",
+    "language.german": "Allemand",
+    "add_button": "Ajouter un employé",
+    "logout_button": "Se déconnecter",
+    "employee_id": "Identifiant de l'employé",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
+    "email": "E-mail",
+    "mobile": "Mobile",
+    "salary": "Un salaire",
+    "action": "Action",
+    "edit": "Éditer",
+    "delete": "Supprimer",
+    "filter" : "Filtre"
+}

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AngularDialogComponent } from './angular-dialog/angular-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +17,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {MatSelectModule} from '@angular/material/select';
 
+  
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/translate/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +52,17 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormFieldModule,
     MatTableModule,
     FormsModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en-US',
+      loader:{
+        provide:TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

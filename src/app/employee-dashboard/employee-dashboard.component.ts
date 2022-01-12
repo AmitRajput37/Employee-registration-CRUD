@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { AngularDialogComponent } from '../angular-dialog/angular-dialog.compone
 import { ApiService } from '../shared/api.service';
 import { EmployeeModel } from './employee.dashboard.model';
 import { MatSort } from '@angular/material/sort';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -18,8 +19,8 @@ export class EmployeeDashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'mobile', 'salary', 'action'];
 
   dataSource: MatTableDataSource<EmployeeModel>;
-  
-  formValue: FormGroup;
+
+  public formValue: FormGroup;
   employeeModelObj: EmployeeModel = new EmployeeModel();
   showAdd: boolean;
   showUpdate: boolean;
@@ -28,7 +29,9 @@ export class EmployeeDashboardComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private formBuilder: FormBuilder,
-    private api: ApiService, public dialog: MatDialog, private router: Router) { }
+    private api: ApiService, public dialog: MatDialog, private router: Router, public translate: TranslateService) {
+    
+  }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
@@ -41,7 +44,19 @@ export class EmployeeDashboardComponent implements OnInit {
     })
 
     this.getAllEmployee();
-    
+
+  }
+  // get f() { return this.formValue.controls }
+  // get firstname() { return this.formValue.get('firstname') }
+  // get lastname() { return this.formValue.get('lastname') }
+  // get email() { return this.formValue.get('email') }
+  // get mobile() { return this.formValue.get('mobile') }
+  // get salary() { return this.formValue.get('salary') }
+
+
+  public selectLanguage(event:any){
+    console.log(event)
+    this.translate.use(event.value);
   }
   
   applyFilter(event: Event) {
@@ -67,6 +82,9 @@ export class EmployeeDashboardComponent implements OnInit {
 
   postEmployeeDetails() {
     console.log(this.formValue)
+    if (this.formValue.invalid) {
+      return;
+    }
     this.employeeModelObj.firstName = this.formValue.controls.firstName.value;
     this.employeeModelObj.lastName = this.formValue.controls.lastName.value;
     this.employeeModelObj.email = this.formValue.controls.email.value;
@@ -148,7 +166,7 @@ export class EmployeeDashboardComponent implements OnInit {
     })
   }
 
-  
+
 
   deleteEmployee(row: any) {
 
