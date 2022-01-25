@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AngularDialogComponent } from '../angular-dialog/angular-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '../shared/api.service';
+import { UserModel } from '../shared/model/user.model';
 
 
 
@@ -15,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class LoginComponent implements OnInit {
 
   public loginForm : FormGroup;
+  loginObj : UserModel = new UserModel();
   public isInValid : boolean;
   submitted : boolean = false;
 
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router,
-     public dialog: MatDialog) {  
+     public dialog: MatDialog, private api : ApiService) {  
        localStorage.clear() 
       
        this.loginForm = this.formBuilder.group({
@@ -88,35 +91,45 @@ export class LoginComponent implements OnInit {
   }
 
   
-  login(): void{
-    this.submitted = true;
-    var isChecked = true;
-    this.http.get<any>("http://localhost:3000/signup")
-    .subscribe(res => {
-      const user = res.find((a:any) => {
-        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
-      });
+  // login(): void{
+  //   this.submitted = true;
+  //   var isChecked = true;
+  //   this.http.get<any>("http://localhost:3000/signup")
+  //   .subscribe(res => {
+  //     const user = res.find((a:any) => {
+  //       return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
+  //     });
 
-      console.log(this.loginForm.value);
-      if(this.loginForm.invalid){
-        isChecked = false;
-        return;
-      }
-      if(user){
-        // alert("login success !!");
+  //     console.log(this.loginForm.value);
+  //     if(this.loginForm.invalid){
+  //       isChecked = false;
+  //       return;
+  //     }
+  //     if(user){
+  //       // alert("login success !!");
         
-        this.loginDialog();
-        localStorage.setItem('token', "abcdefgh");
-        this.loginForm.reset();
-        this.router.navigate(['dashboard'])
-      }else{
-        // alert("user not found !!");
-        this.userNotFoundDialog();
-      }
-    }, err => {
-      // alert("Something went wrong !!");
-      this.somethingWentWrongDialog()
+  //       this.loginDialog();
+  //       localStorage.setItem('token', "abcdefgh");
+  //       this.loginForm.reset();
+  //       this.router.navigate(['dashboard'])
+  //     }else{
+  //       // alert("user not found !!");
+  //       this.userNotFoundDialog();
+  //     }
+  //   }, err => {
+  //     // alert("Something went wrong !!");
+  //     this.somethingWentWrongDialog()
+  //   })
+  // }
+
+  login(){
+    this.loginObj.Email = this.loginForm.value.email;
+    this.loginObj.Password = this.loginForm.value.password;
+    this.api.login(this.loginObj)
+    .subscribe(res => {
+      alert(res.message);
+      this.loginForm.reset();
+      this.router.navigate(['dashboard']);
     })
   }
-
 }

@@ -68,7 +68,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.api.getEmployee()
       .subscribe(res => {
         // this.employeeData = res;
-        this.dataSource = new MatTableDataSource(res);
+        this.dataSource = new MatTableDataSource(res.employeeDetails);
         this.dataSource.sort = this.sort;
       })
 
@@ -83,13 +83,14 @@ export class EmployeeDashboardComponent implements OnInit {
   postEmployeeDetails() {
     console.log(this.formValue)
     if (this.formValue.invalid) {
+      alert("Fill all the fields");
       return;
     }
-    this.employeeModelObj.firstName = this.formValue.controls.firstName.value;
-    this.employeeModelObj.lastName = this.formValue.controls.lastName.value;
-    this.employeeModelObj.email = this.formValue.controls.email.value;
-    this.employeeModelObj.mobile = this.formValue.controls.mobile.value;
-    this.employeeModelObj.salary = this.formValue.controls.salary.value;
+    this.employeeModelObj.FirstName = this.formValue.controls.firstName.value;
+    this.employeeModelObj.LastName = this.formValue.controls.lastName.value;
+    this.employeeModelObj.Email = this.formValue.controls.email.value;
+    this.employeeModelObj.Mobile = this.formValue.controls.mobile.value;
+    this.employeeModelObj.Salary = this.formValue.controls.salary.value;
     this.api.postEmployee(this.employeeModelObj)
       .subscribe(res => {
         console.log(res);
@@ -180,7 +181,7 @@ export class EmployeeDashboardComponent implements OnInit {
   onEdit(row: any) {
     this.showAdd = false;
     this.showUpdate = true;
-    this.employeeModelObj.id = row.id;
+    this.employeeModelObj.Id = row.id;
     this.formValue.controls['firstName'].setValue(row.firstName);
     this.formValue.controls['lastName'].setValue(row.lastName);
     this.formValue.controls['email'].setValue(row.email);
@@ -189,13 +190,13 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
   updateEmployeeDetails() {
-    this.employeeModelObj.firstName = this.formValue.controls.firstName.value;
-    this.employeeModelObj.lastName = this.formValue.controls.lastName.value;
-    this.employeeModelObj.email = this.formValue.controls.email.value;
-    this.employeeModelObj.mobile = this.formValue.controls.mobile.value;
-    this.employeeModelObj.salary = this.formValue.controls.salary.value;
+    this.employeeModelObj.FirstName = this.formValue.controls.firstName.value;
+    this.employeeModelObj.LastName = this.formValue.controls.lastName.value;
+    this.employeeModelObj.Email = this.formValue.controls.email.value;
+    this.employeeModelObj.Mobile = this.formValue.controls.mobile.value;
+    this.employeeModelObj.Salary = this.formValue.controls.salary.value;
 
-    this.api.updateEmployee(this.employeeModelObj, this.employeeModelObj.id)
+    this.api.updateEmployee(this.employeeModelObj)
       .subscribe(res => {
         // alert("Employee details updated successfully");
         this.updateDialog();

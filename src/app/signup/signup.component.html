@@ -69,6 +69,17 @@
                         <!-- <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span> -->
                     </div>
 
+                    <div class="mb-3 mt-2">
+                        <label class="form-label">User Type</label>
+                        <select formControlName="usertype" class="form-select" aria-label="Default select example">
+                            <option selected value="">Select User Type</option>
+                            <option value="Admin">Admin</option>    
+                            <option value="Employee">Employee</option>
+                                               
+                        </select>
+                        <span class="error" *ngIf="usertype.invalid && usertype.touched">User Type is required</span>
+                    </div>
+
                     <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
 
                 </form>

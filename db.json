@@ -2,11 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "firstName": "Amit",
-      "lastName": "Maiyar",
-      "email": "Amit.kh022@gmail.com",
-      "mobile": "9890984945",
-      "salary": "500003"
+      "firstName": "chetan",
+      "lastName": "maiyar",
+      "email": "chetan@gmail.com",
+      "mobile": "9890984946",
+      "salary": 77777
     },
     {
       "id": 2,
@@ -39,6 +39,30 @@
       "email": "chetan@gmail.com",
       "mobile": "8888888888",
       "salary": "76000"
+    },
+    {
+      "id": 7,
+      "firstName": "Amit",
+      "lastName": "Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "09890984945",
+      "salary": "1111111111"
+    },
+    {
+      "id": 8,
+      "firstName": "Amit",
+      "lastName": "Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "09890984945",
+      "salary": "2222222222"
+    },
+    {
+      "id": 9,
+      "firstName": "Amit",
+      "lastName": "Maiyar",
+      "email": "Amit.kh022@gmail.com",
+      "mobile": "09890984945",
+      "salary": "2222222222"
     }
   ],
   "signup": [
