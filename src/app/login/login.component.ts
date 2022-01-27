@@ -39,18 +39,17 @@ export class LoginComponent implements OnInit {
       })
       }
 
-      get f () { return this.loginForm.controls}
-
-  ngOnInit(): void {
-    // this.loginForm = this.formBuilder.group({
-    //   username  : new FormControl(null, [Validators.required])
-    //   // email: ['',Validators.required],
-    //   // password: ['', Validators.required]
-    // })
+  ngOnInit(): boolean{
+    // const token = localStorage.getItem('token')
+    // console.log(token);
+    if (localStorage.getItem('token') != null)
+      this.router.navigateByUrl('login');
+      return false;
+      
   }
 
 
-
+  get f () { return this.loginForm.controls}
   userNotFoundDialog(): void{
     const message = "User not found";
 
@@ -127,7 +126,9 @@ export class LoginComponent implements OnInit {
     this.loginObj.Password = this.loginForm.value.password;
     this.api.login(this.loginObj)
     .subscribe(res => {
-      alert(res.message);
+      localStorage.setItem('token',res.token);
+      // alert(res.message);
+      this.loginDialog();
       this.loginForm.reset();
       this.router.navigate(['dashboard']);
     })
